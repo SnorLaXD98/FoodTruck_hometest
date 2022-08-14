@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org.dtd.mybatis-3-mapper.dtd">
+
+<mapper namespace = "com.sbs.foodtruck2.Mapper.TruckMapper">
+
+
+    <!-- 트럭 인서트 -->
+        <insert id  ="insertFoodTruck" parameterType = "TruckDTO">
+
+            INSERT INTO truck(
+                    , image
+                    , latitude
+                    , longitude
+                    , name
+                    , open_date
+                    , order_count
+                    , rate
+                    , title
+                    , type
+                    , distance
+                    , wait_time
+            ) Values (
+                    , #{image}
+                    , #{latitude}
+                    , #{longitude}
+                    , #{name}
+                    , #{open_date}
+                    , #{order_count}
+                    , #{rate}
+                    , #{title}
+                    , #{type}
+                    , #{distance}
+                    , #{wait_time}
+
+            );
+
+        </insert>
+
+    <!-- 트럭 찾기 음식별로  -->
+        <select id ="findFoodTruck" parameterType = "String" resultType = "TruckDTO">
+            Select
+                      *
+            FROM
+                      truck
+            Where
+                      type = #{type}
+            ;
+
+        </select>
+
+    <!-- 트럭 찾기 음식별로 거리순 정렬  -->
+        <select id ="distanceFoodTruck" parameterType="String" resultType = "TruckDTO">
+            SELECT
+                      *
+            FROM
+                      truck
+            WHERE
+                      type = #{type}
+            ORDER BY
+                      distance desc
+
+            ;
+
+        </select>
+    <!-- 트럭 찾기 음식별로 레이팅순 정렬  -->
+        <select id ="rateFoodTruck" parameterType="String"  resultType = "TruckDTO">
+            SELECT
+                      *
+            FROM
+                      truck
+            WHERE
+                      type = #{type}
+            ORDER BY
+                      rate desc
+            ;
+
+        </select>
+
+        <select id ="openTimeTruck"   resultType = "TruckDTO">
+            SELECT
+                      *
+            FROM
+                      truck
+            ORDER BY
+                      open_date desc
+            ;
+
+        </select>
+
+        <delete id = "deleteTruck" parameterType = "String" >
+            DELETE
+            FROM
+                      truck
+            WHERE
+                      id=#{id}
+            ;
+
+        </delete>
+
+        <select id ="SearchRateTruck"  resultType = "TruckDTO" >
+            Select
+                      *
+            FROM
+                      truck
+            ORDER BY
+                      rate desc
+            ;
+
+        </select>
+
+<!--=================== UserAccount Mapper =================== -->
+        <insert id ="insertUserAccount" parameterType ="UserAccountDTO">
+            INSERT INTO userAccount(
+                      idToken
+                    , email
+                    , password
+                    , name
+                    , phoneNumber
+            ) Values (
+                      #{idToken}
+                    , #{email}
+                    , #{password}
+                    , #{name}
+                    , #{phoneNumber}
+            );
+        </insert>
+
+            <select id ="findUserAccount" parameterType="String"  resultType = "UserAccountDTO">
+                SELECT
+                          *
+                FROM
+                          userAccount
+                WHERE
+                        email = #{email}
+
+                ;
+
+            </select>
+
+        <delete id = "deleteUserAccount" parameterType = "String" >
+            DELETE
+            FROM
+                      userAccount
+            WHERE
+                      idToken=#{idToken}
+            ;
+
+        </delete>
+
+        <update id = "modifyPwUserAccount" parameterType = "HashMap" >
+            UPDATE
+                      UserAccount
+            SET
+                      password = #{changed_password}
+            WHERE
+                      idToken = #{idToken}
+            AND
+                      email = #{email}
+            ;
+
+        </update>
+
+
+
+        <update id = "modifyNameUserAccount" parameterType = "HashMap" >
+            UPDATE
+                      UserAccount
+            SET
+                      name = #{changed_name}
+            WHERE
+                      idToken = #{idToken}
+            AND
+                      email = #{email}
+            ;
+
+        </update>
+
+    <!--=================== Notice Mapper =================== -->
+
+        <insert id = "insertNotice" parameterType="NoticeDTO" >
+            INSERT INTO Notice(
+                      content
+                    , title
+            ) Values (
+                      #{content}
+                    , #{title}
+            );
+
+
+
+        </insert>
+
+        <select id = "sortNotice" resultType = "NoticeDTO"  >
+            SELECT
+                      *
+            FROM
+                      Notice
+            ORDER BY
+                      date desc
+            ;
+
+
+        </select>
+
+        <delete id = "deleteNotice" parameterType = "int" >
+            DELETE
+            FROM
+                      notice
+            WHERE
+                      noticeId=#{noticeId}
+            ;
+
+        </delete>
+
+        <select id = "searchNotice"  parameterType="int" resultType = "NoticeDTO"  >
+            SELECT
+                      *
+            FROM
+                      Notice
+            WHERE
+                      noticeId = #{noticeId}
+            ;
+
+
+        </select>
+
+        <update id = "modifyNotice" parameterType = "NoticeDTO"  >
+            UPDATE
+                     Notice
+            SET
+                      title = #{title}
+                    , content =#{content}
+                    , date = now()
+            WHERE
+                      noticeId = #{noticeId}
+
+            ;
+
+        </update>
+    <!--=================== Food Mapper =================== -->
+
+        <select id = "findTruckFood"  parameterType="int" resultType = "FoodDTO"  >
+            SELECT
+                    *
+            FROM
+                    Food
+            WHERE
+                    truckId = #{truckId}
+            ;
+
+
+        </select>
+
+
+
+
+</mapper>
