@@ -11,7 +11,7 @@ public class TruckDTO {
     private String id;
     private String image;
     @JsonIgnore
-    private LocationDTO location;
+    private LocationDTO location = new LocationDTO("0","0");
     private String latitude;
     private String longitude;
     private String name;
