@@ -1,5 +1,6 @@
 package com.sbs.foodtruck2.DTO;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,7 +10,7 @@ public class TruckDTO {
 
     private String id;
     private String image;
-    //@JsonIgnore
+    @JsonIgnore
     private LocationDTO location;
     private String latitude;
     private String longitude;
