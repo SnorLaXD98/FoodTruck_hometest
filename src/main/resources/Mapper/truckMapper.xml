@@ -8,7 +8,6 @@
         <insert id  ="insertFoodTruck" parameterType = "TruckDTO">
 
             INSERT INTO truck(
-
                       image
                     , latitude
                     , longitude
@@ -21,7 +20,6 @@
                     , distance
                     , wait_time
             ) Values (
-
                       #{image}
                     , #{latitude}
                     , #{longitude}
