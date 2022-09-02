@@ -252,6 +252,20 @@
         </select>
 
 
+    <!--=================== Order Mapper =================== -->
+
+    <select id = "findTruckOrder"  parameterType="int" resultType = "OrderDTO"  >
+        SELECT
+                *
+        FROM
+                Order
+        WHERE
+                truckId = #{truckId}
+        ;
+
+
+    </select>
+
 
 
 </mapper>

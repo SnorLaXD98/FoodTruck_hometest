@@ -1,9 +1,6 @@
 package com.sbs.foodtruck2.Mapper;
 
-import com.sbs.foodtruck2.DTO.FoodDTO;
-import com.sbs.foodtruck2.DTO.NoticeDTO;
-import com.sbs.foodtruck2.DTO.TruckDTO;
-import com.sbs.foodtruck2.DTO.UserAccountDTO;
+import com.sbs.foodtruck2.DTO.*;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -75,6 +72,12 @@ public interface TruckMapper {
     public List<FoodDTO> findAllFood();
 
    public List<FoodDTO> findTruckFood(int truckId);
+
+    /* --------------------Order---------------------*/
+
+    @Select("Select * from order")
+    public List<OrderDTO> findAllOrder();
+    public List<OrderDTO> findTruckOrder(int truckId);
 
 
 }
