@@ -3,9 +3,7 @@ package com.sbs.foodtruck2.Controller;
 import com.sbs.foodtruck2.DTO.OrderDTO;
 import com.sbs.foodtruck2.Mapper.TruckMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,6 +26,11 @@ public class OrderController {
         List<OrderDTO> orders = truckMapper.findTruckOrder(truckId);
 
         return orders;
+    }
+
+    @PostMapping("/order/add")
+    public void insertOrder(@RequestBody OrderDTO orderDTO){
+        truckMapper.insertOrder(orderDTO);
     }
 
 }

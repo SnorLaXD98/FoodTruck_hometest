@@ -4,6 +4,7 @@ import com.sbs.foodtruck2.DTO.*;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
+import javax.swing.*;
 import java.util.HashMap;
 import java.util.List;
 
@@ -78,6 +79,14 @@ public interface TruckMapper {
     @Select("Select * from order")
     public List<OrderDTO> findAllOrder();
     public List<OrderDTO> findTruckOrder(int truckId);
+    public void insertOrder(OrderDTO orderDTO)
 
+    /* --------------------Favorite---------------------*/
+
+    @Select("Select * from favorite")
+    public List<FavoriteDTO> findAllFavor();
+    public List<FavoriteDTO> findUserFavor(int userId);
+
+    public void insertFavorite(FavoriteDTO favoriteDTO);
 
 }
