@@ -8,7 +8,6 @@ import lombok.Setter;
 @Setter
 public class NoticeDTO {
 
-    @JsonIgnore
     private int noticeId;
     private String content;
     private String date;
