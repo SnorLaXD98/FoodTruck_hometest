@@ -79,7 +79,7 @@ public interface TruckMapper {
     @Select("Select * from order")
     public List<OrderDTO> findAllOrder();
     public List<OrderDTO> findTruckOrder(int truckId);
-    public void insertOrder(OrderDTO orderDTO)
+    public void insertOrder(OrderDTO orderDTO);
 
     /* --------------------Favorite---------------------*/
 
